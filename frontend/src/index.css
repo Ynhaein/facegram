@@ -1,0 +1,27 @@
+@import "tailwindcss"; 
+@import "@fontsource/poppins"; 
+
+@theme { 
+  --font-primary: "poppins", sans-serif;
+
+  --color-primary: #6366f1;           /* Indigo - Main Brand */
+  --color-primary-hover: #4f46e5;
+  --color-primary-active: #4338ca;
+
+  --color-accent: #ec4899;            /* Pink accent*/
+  --color-accent-hover: #db2777;
+
+  --color-success: #22c55e;
+  --color-danger: #ef4444;
+  --color-warning: #eab308;
+
+  /* Background */
+  --color-bg-primary: #0f0f0f;       /* Dark background utama */
+  --color-bg-secondary: #171717;      /* Card / modal background */
+  --color-bg-tertiary: #262626;       /* Hover / border */
+
+  /* Text */
+  --color-text-primary: #f1f1f1;
+  --color-text-secondary: #a3a3a3;
+  --color-text-muted: #71717a;
+}
