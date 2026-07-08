@@ -80,32 +80,30 @@ const LoginPage = () => {
   return (
     <div className="w-full">
       <header className="mb-8">
-        <h2 className="text-text-primary text-2xl font-bold">Selamat datang kembali</h2>
-        <p className="text-text-secondary mt-1.5 text-sm">
+        <h2 className="text-text-primary text-2xl font-bold -tracking-0.5">Selamat datang kembali</h2>
+        <p className="text-text-secondary mt-2 text-sm">
           Masuk dan mulailah berkarya
         </p>
       </header>
 
-      <form onSubmit={handleLogin} className="space-y-4.5">
-        
+      <form onSubmit={handleLogin} className="space-y-5">
+
         {/* Email */}
         <div className="relative group">
-          <div>
-            <span className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-text-muted group-focus-within:text-primary transition-colors duration-200">
-              <FaEnvelope className="text-sm" />
-            </span>
-            <input
-              className="w-full bg-bg-tertiary text-text-primary placeholder:text-text-muted/60 pl-11 pr-4 py-3 rounded-xl border border-transparent focus:border-primary/50 focus:outline-none transition-all duration-200 text-sm"
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="Email"
-            />
-            {errors.email && (
-              <p className="text-danger text-xs mt-1.5 pl-1">{errors.email[0]}</p>
-            )}
-          </div>
+          <span className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-text-muted group-focus-within:text-primary transition-colors duration-200">
+            <FaEnvelope className="text-sm" />
+          </span>
+          <input
+            className="w-full bg-bg-tertiary text-text-primary placeholder:text-text-muted/60 pl-11 pr-4 py-3 rounded-xl border border-border-default focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/20 transition-all duration-200 text-sm"
+            type="email"
+            name="email"
+            value={form.email}
+            onChange={handleChange}
+            placeholder="Email"
+          />
+          {errors.email && (
+            <p className="text-danger text-xs mt-1.5 pl-1">{errors.email[0]}</p>
+          )}
         </div>
 
         {/* Password */}
@@ -114,7 +112,7 @@ const LoginPage = () => {
             <FaLock className="text-sm" />
           </span>
           <input
-            className="w-full bg-bg-tertiary text-text-primary placeholder:text-text-muted/60 pl-11 pr-4 py-3 rounded-xl border border-transparent focus:border-primary/50 focus:outline-none transition-all duration-200 text-sm"
+            className="w-full bg-bg-tertiary text-text-primary placeholder:text-text-muted/60 pl-11 pr-4 py-3 rounded-xl border border-border-default focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/20 transition-all duration-200 text-sm"
             type="password"
             name="password"
             value={form.password}
@@ -129,7 +127,7 @@ const LoginPage = () => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 rounded-xl bg-primary hover:bg-primary-hover active:bg-primary-active text-white font-semibold text-sm tracking-wide transition-all duration-200 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
+          className="w-full py-3 rounded-xl bg-primary hover:bg-primary-hover active:bg-primary-active text-white font-semibold text-sm tracking-wide transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]"
         >
           {loading ? "Masuk..." : "Masuk"}
         </button>
@@ -137,8 +135,8 @@ const LoginPage = () => {
 
       <p className="text-text-secondary text-sm mt-6">
         Belum punya akun?{" "}
-        <Link 
-          to="/register" 
+        <Link
+          to="/register"
           className="text-primary hover:text-primary-hover hover:underline font-medium transition-colors duration-200"
         >
           Daftar

@@ -64,20 +64,19 @@ const PostPopup = () => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-9999 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div
         className="absolute inset-0 bg-black/80 backdrop-blur-sm"
         onClick={closePopup}
       />
 
       <div
-        className="relative w-full max-w-lg bg-bg-secondary rounded-3xl shadow-2xl shadow-black/50 overflow-hidden animate-[scaleIn_0.2s_ease-out]"
+        className="relative w-full max-w-lg bg-bg-secondary rounded-3xl overflow-hidden animate-scaleIn"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-slate-500/10">
-          <h2 className="text-xl font-bold text-text-primary tracking-tight">
-            Buat Postingan
+        <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-border-subtle">
+          <h2 className="text-xl font-bold text-text-primary -tracking-0.5">
+            Buat postingan
           </h2>
           <button
             onClick={closePopup}
@@ -94,10 +93,9 @@ const PostPopup = () => {
             onChange={handleChange}
             placeholder="Apa yang sedang kamu pikirkan?"
             rows={4}
-            className="w-full bg-bg-tertiary text-text-primary placeholder:text-text-muted p-4 rounded-2xl resize-none focus:outline-none focus:ring-2 focus:ring-primary/40 text-[15px] leading-relaxed transition"
+            className="w-full bg-bg-tertiary text-text-primary placeholder:text-text-muted p-4 rounded-2xl resize-none focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm leading-relaxed transition"
           />
 
-          {/* File Picker */}
           <div>
             <input
               ref={fileRef}
@@ -120,7 +118,7 @@ const PostPopup = () => {
                     <button
                       type="button"
                       onClick={() => removeFile(i)}
-                      className="absolute top-1 right-1 w-6 h-6 flex items-center justify-center rounded-full bg-black/60 text-white opacity-0 group-hover:opacity-100 transition cursor-pointer"
+                      className="absolute top-1 right-1 w-6 h-6 flex items-center justify-center rounded-lg bg-black/60 text-white opacity-0 group-hover:opacity-100 transition cursor-pointer"
                     >
                       <IoClose className="text-sm" />
                     </button>
@@ -130,7 +128,7 @@ const PostPopup = () => {
                 <button
                   type="button"
                   onClick={() => fileRef.current?.click()}
-                  className="aspect-square rounded-2xl border-2 border-dashed border-slate-500/25 flex flex-col items-center justify-center gap-1 text-text-muted hover:border-primary/50 hover:text-primary transition cursor-pointer"
+                  className="aspect-square rounded-2xl border-2 border-dashed border-border-default flex flex-col items-center justify-center gap-1 text-text-muted hover:border-primary/50 hover:text-primary transition cursor-pointer"
                 >
                   <BiSolidImageAdd className="text-2xl" />
                   <span className="text-[11px] font-medium">Tambah</span>
@@ -140,7 +138,7 @@ const PostPopup = () => {
               <button
                 type="button"
                 onClick={() => fileRef.current?.click()}
-                className="w-full py-10 rounded-2xl border-2 border-dashed border-slate-500/25 flex flex-col items-center justify-center gap-2 text-text-muted hover:border-primary/50 hover:text-primary hover:bg-bg-tertiary/30 transition cursor-pointer"
+                className="w-full py-10 rounded-2xl border-2 border-dashed border-border-default flex flex-col items-center justify-center gap-2 text-text-muted hover:border-primary/50 hover:text-primary hover:bg-bg-tertiary/30 transition cursor-pointer"
               >
                 <BiSolidImageAdd className="text-3xl" />
                 <span className="text-sm font-medium">Pilih gambar</span>
@@ -149,19 +147,18 @@ const PostPopup = () => {
             )}
           </div>
 
-          {/* Actions */}
           <div className="flex gap-3 pt-2">
             <button
               type="button"
               onClick={closePopup}
-              className="flex-1 py-3 rounded-2xl border border-slate-500/15 text-text-primary font-medium hover:bg-bg-tertiary transition cursor-pointer"
+              className="flex-1 py-3 rounded-xl border border-border-default text-text-primary font-medium hover:bg-bg-tertiary transition cursor-pointer active:scale-[0.98]"
             >
               Batal
             </button>
             <button
               type="submit"
               disabled={loading || attachments.length === 0}
-              className="flex-1 py-3 rounded-2xl bg-primary hover:bg-primary-hover text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition cursor-pointer"
+              className="flex-1 py-3 rounded-xl bg-primary hover:bg-primary-hover active:bg-primary-active text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition cursor-pointer active:scale-[0.98]"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -175,13 +172,6 @@ const PostPopup = () => {
           </div>
         </form>
       </div>
-
-      <style>{`
-        @keyframes scaleIn {
-          from { opacity: 0; transform: scale(0.92) translateY(8px); }
-          to   { opacity: 1; transform: scale(1) translateY(0); }
-        }
-      `}</style>
     </div>
   );
 };

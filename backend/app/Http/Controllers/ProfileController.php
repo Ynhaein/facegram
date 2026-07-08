@@ -23,14 +23,14 @@ class ProfileController extends Controller
         }
 
         return response()->json([
-            'success' => true, 
+            'success' => true,
             'data' => [
-                'targetUser' => $targetUser, 
-                'posts' => $targetUser->posts, 
-                'followers_count' => $targetUser->followers->count(), 
-                'following_count' => $targetUser->following->count(), 
-                'is_following'
+                'targetUser' => $targetUser,
+                'posts' => $targetUser->posts,
+                'followers_count' => $targetUser->followers->count(),
+                'following_count' => $targetUser->following->count(),
+                'is_following' => $authUser->isFollowing($targetUser)
             ]
-        ]); 
+        ]);
     }
 }

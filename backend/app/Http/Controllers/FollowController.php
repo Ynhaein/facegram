@@ -42,8 +42,8 @@ class FollowController extends Controller
         
         $user->following()->detach($targetUser->id); 
         return response()->json([
-            'success' => true, 
-            'message' => "success to unffolowing {$targetUser->username}"
+            'success' => true,
+            'message' => "success to unfollowing {$targetUser->username}"
         ]);
     }  
 
@@ -69,7 +69,7 @@ class FollowController extends Controller
 
         $following = $user->following()->when($search, function($query, $search){
             $query->where('username', 'LIKE', "%{$search}%");
-        })->withCount('following')->select('users.')->select('users.id','users.username', 'users.is_private')->latest('follows.created_at')->paginate(10); 
+        })->withCount('followers')->select('users.id','users.username', 'users.is_private')->latest('follows.created_at')->paginate(10);
 
         return response()->json([
             'success' => true, 

@@ -28,7 +28,6 @@ Pastikan sudah terinstall di sistem kamu:
 | Node.js       | ^20         |
 | pnpm          | latest      |
 | npm           | (bundled with Node.js) |
-
 ---
 
 ## Clone & Setup

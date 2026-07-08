@@ -10,13 +10,13 @@ const Bottombar = () => {
     const token = localStorage.getItem('auth_token');
 
     return (
-        <nav className="fixed bottom-0 left-0 right-0 bg-bg-primary/80 backdrop-blur-xl border-t border-slate-500/15 md:hidden z-50 safe-area-bottom">
+        <nav className="fixed bottom-0 left-0 right-0 bg-bg-primary/85 backdrop-blur-xl border-t border-border-subtle md:hidden z-50 safe-area-bottom">
             <div className="flex items-center justify-around py-2 px-4">
                 <NavLink
                     to="/"
                     className={({isActive}) => clsx(
-                        "flex items-center justify-center h-11 w-11 rounded-xl transition-all duration-200",
-                        isActive ? "text-primary bg-primary/15" : "text-text-primary hover:bg-zinc-50/15"
+                        "flex items-center justify-center h-10 w-10 rounded-xl transition-all duration-200",
+                        isActive ? "text-primary bg-primary/10" : "text-text-muted hover:text-text-primary hover:bg-bg-tertiary"
                     )}
                 >
                     <GrHomeRounded className="text-xl"/>
@@ -25,25 +25,25 @@ const Bottombar = () => {
                 <NavLink
                     to="/profile"
                     className={({isActive}) => clsx(
-                        "flex items-center justify-center h-11 w-11 rounded-xl transition-all duration-200",
-                        isActive ? "text-primary bg-primary/15" : "text-text-primary hover:bg-zinc-50/15"
+                        "flex items-center justify-center h-10 w-10 rounded-xl transition-all duration-200",
+                        isActive ? "text-primary bg-primary/10" : "text-text-muted hover:text-text-primary hover:bg-bg-tertiary"
                     )}
                 >
                     <CgProfile className="text-xl"/>
                 </NavLink>
 
-                <button className="flex items-center justify-center h-11 w-11 rounded-xl transition-all duration-200 text-text-primary hover:bg-zinc-50/15">
-                    <BiSolidImageAdd className="text-2xl"/>
+                <button className="flex items-center justify-center h-10 w-10 rounded-xl transition-all duration-200 text-text-muted hover:text-text-primary hover:bg-bg-tertiary">
+                    <BiSolidImageAdd className="text-xl"/>
                 </button>
 
                 {token ? (
-                    <button className="flex items-center justify-center h-11 w-11 rounded-xl transition-all duration-200 text-text-primary hover:bg-zinc-50/15">
+                    <button className="flex items-center justify-center h-10 w-10 rounded-xl transition-all duration-200 text-text-muted hover:text-text-primary hover:bg-bg-tertiary">
                         <RiLogoutCircleRLine className="text-lg"/>
                     </button>
                 ) : (
                     <Link
                         to="/login"
-                        className="flex items-center justify-center h-11 w-11 rounded-xl transition-all duration-200 text-text-primary hover:bg-zinc-50/15"
+                        className="flex items-center justify-center h-10 w-10 rounded-xl transition-all duration-200 text-text-muted hover:text-text-primary hover:bg-bg-tertiary"
                     >
                         <RiLoginCircleLine className="text-lg"/>
                     </Link>

@@ -23,6 +23,11 @@ const FollowLayout = () => {
 
     const targetUsername = username || currentUser.username;
 
+    const navClass = ({ isActive }) => clsx(
+        'transition-all duration-200 py-4 w-full flex items-center justify-center text-sm font-medium',
+        isActive ? "text-primary border-b-2 border-primary" : "text-text-muted hover:text-text-secondary"
+    );
+
     const clearSearch = () => {
         setSearch("");
     };
@@ -76,14 +81,14 @@ const FollowLayout = () => {
     const paramSuffix = username ? `/${username}` : '';
 
     return (
-        <div className="w-[90%] max-w-xl mx-auto">
+        <div className="w-full max-w-xl mx-auto">
             {/* Header */}
-            <header className="flex items-center gap-3 mb-10">
+            <header className="flex items-center gap-3 mb-8">
                 <button
                     onClick={() => navigate(-1)}
-                    className="text-text-primary h-10 w-10 flex items-center cursor-pointer justify-center rounded-xl text-lg hover:bg-bg-tertiary/50 transition"
+                    className="text-text-secondary hover:text-text-primary h-9 w-9 flex items-center cursor-pointer justify-center rounded-xl hover:bg-bg-tertiary transition-all duration-200"
                 >
-                    <FaAngleLeft />
+                    <FaAngleLeft className="text-sm" />
                 </button>
 
                 {loading ? (
@@ -93,12 +98,12 @@ const FollowLayout = () => {
                     </div>
                 ) : isPrivate ? (
                     <div>
-                        <h1 className="text-text-primary font-semibold">@{targetUsername}</h1>
+                        <h1 className="text-text-primary font-semibold text-lg">@{targetUsername}</h1>
                         <p className="text-sm text-text-muted">Akun Private</p>
                     </div>
                 ) : (
                     <div>
-                        <h1 className="text-text-primary font-semibold">{profile?.username || targetUsername}</h1>
+                        <h1 className="text-text-primary font-semibold text-lg">{profile?.username || targetUsername}</h1>
                         <p className="text-sm text-text-muted">
                             {followersCount + followingCount} koneksi
                         </p>
@@ -107,34 +112,34 @@ const FollowLayout = () => {
             </header>
 
             {/* Search */}
-            <div className="mb-5">
+            <div className="mb-6">
                 <div className="relative group">
-                    <IoSearchSharp className="absolute left-5 top-1/2 -translate-y-1/2 text-xl text-text-muted group-focus-within:text-primary transition-colors duration-300 pointer-events-none" />
+                    <IoSearchSharp className="absolute left-4 top-1/2 -translate-y-1/2 text-lg text-text-muted group-focus-within:text-primary transition-colors duration-300 pointer-events-none" />
                     <input
                         type="text"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder="Cari pengguna..."
-                        className="w-full bg-bg-tertiary text-text-primary placeholder:text-text-muted pl-14 pr-14 py-4 rounded-2xl border border-slate-500/10 focus:border-primary/40 focus:outline-none focus:bg-bg-tertiary/80 text-[15px] transition-all duration-300"
+                        className="w-full bg-bg-tertiary text-text-primary placeholder:text-text-muted pl-11 pr-11 py-3.5 rounded-2xl border border-border-default focus:border-primary/40 focus:outline-none focus:bg-bg-tertiary text-sm transition-all duration-200"
                     />
 
                     {search && (
                         <button
                             onClick={clearSearch}
-                            className="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-primary transition-colors duration-200 cursor-pointer"
+                            className="absolute right-3.5 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-primary transition-colors duration-200 cursor-pointer"
                         >
-                            <IoCloseCircle className="text-xl" />
+                            <IoCloseCircle className="text-lg" />
                         </button>
                     )}
                 </div>
             </div>
 
             {/* Tabs */}
-            <div className="flex items-center justify-center border-b border-slate-500/15 mb-6">
-                <NavLink to={`/followers${paramSuffix}`} className={({ isActive }) => clsx('transition-all duration-200 py-5 w-full flex items-center justify-center', isActive ? "text-primary border-b border-primary" : "text-text-muted hover:text-text-primary")}>
+            <div className="flex items-center justify-center border-b border-border-subtle mb-6">
+                <NavLink to={`/followers${paramSuffix}`} className={navClass}>
                     Followers
                 </NavLink>
-                <NavLink to={`/following${paramSuffix}`} className={({ isActive }) => clsx('transition-all duration-200 py-5 w-full flex items-center justify-center', isActive ? "text-primary border-b border-primary" : "text-text-muted hover:text-text-primary")}>
+                <NavLink to={`/following${paramSuffix}`} className={navClass}>
                     Following
                 </NavLink>
             </div>

@@ -7,12 +7,12 @@ import PostPopup from "../components/ui/PostPopup"
 const MainLayout = () => {
   return (
     <PostPopupProvider>
-      <div className="bg-bg-secondary min-h-screen md:flex">
+      <div className="bg-bg-secondary min-h-dvh md:flex">
           <Sidebar />
 
           <main className="md:flex-1">
-            <section className="w-[90%] mx-auto py-10 pb-24 md:pb-10">
-                <Outlet></Outlet>
+            <section className="w-full max-w-4xl mx-auto px-4 md:px-8 py-8 pb-28 md:pb-12">
+                <Outlet />
             </section>
           </main>
 

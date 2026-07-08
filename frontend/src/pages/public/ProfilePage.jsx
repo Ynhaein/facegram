@@ -199,7 +199,7 @@ const ProfilePage = () => {
       {/* Profile Header */}
       <header className="flex flex-col md:flex-row items-center gap-8 md:gap-14 mb-12">
         {/* Avatar */}
-        <div className="w-32 h-32 md:w-36 md:h-36 bg-linear-to-br from-primary to-accent rounded-full flex items-center justify-center text-5xl md:text-6xl font-bold text-white shadow-2xl shadow-primary/20 shrink-0">
+        <div className="w-32 h-32 md:w-36 md:h-36 bg-primary rounded-full flex items-center justify-center text-5xl md:text-6xl font-bold text-white shrink-0">
           {profile?.username?.charAt(0).toUpperCase()}
         </div>
 
@@ -210,13 +210,13 @@ const ProfilePage = () => {
 
             {!isOwnProfile && profile && (
               <button
-                onClick={() => profile?.is_following 
-                  ? handleUnfollow(profile.username) 
+                onClick={() => profile?.is_following
+                  ? handleUnfollow(profile.username)
                   : handleFollow(profile.username)}
-                className={`px-8 py-2 font-semibold rounded-2xl transition cursor-pointer ${
+                className={`px-8 py-2 font-semibold rounded-xl transition-all duration-200 active:scale-95 cursor-pointer ${
                   profile?.is_following
-                    ? "border border-slate-500/30 text-text-primary hover:bg-bg-tertiary"
-                    : "bg-primary hover:bg-primary-hover text-white"
+                    ? "border border-border-default text-text-primary hover:bg-bg-tertiary"
+                    : "bg-primary hover:bg-primary-hover active:bg-primary-active text-white"
                 }`}
               >
                 {profile?.is_following ? "Following" : "Follow"}
@@ -265,11 +265,11 @@ const ProfilePage = () => {
 
       {/* Posts Grid */}
       <div>
-        <div className="border-b border-slate-500/10 mb-6">
-          <div className="flex justify-center gap-12">
-            <div className="flex items-center gap-2 border-b-2 border-white pb-4 -mb-0.5 text-white">
+        <div className="border-b border-border-subtle mb-6">
+          <div className="flex justify-center">
+            <div className="flex items-center gap-2 border-b-2 border-primary pb-4 -mb-0.5 text-primary">
               <IoGridOutline className="text-lg" />
-              <span className="text-sm font-semibold tracking-wide">POSTS</span>
+              <span className="text-sm font-semibold">Posts</span>
             </div>
           </div>
         </div>
@@ -290,7 +290,7 @@ const ProfilePage = () => {
               <div
                 key={post.id}
                 onClick={() => openDetail(post)}
-                className="aspect-square bg-bg-tertiary rounded-2xl overflow-hidden border border-slate-500/10 hover:border-primary/40 hover:scale-[1.02] transition-all duration-200 cursor-pointer"
+                className="aspect-square bg-bg-tertiary rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-200 cursor-pointer"
               >
                 {post.attachments?.[0] && (
                   <img
@@ -304,16 +304,16 @@ const ProfilePage = () => {
           </div>
         ) : isOwnProfile ? (
           <div className="text-center py-20 md:py-28">
-            <div className="w-22 h-22 bg-linear-to-br from-primary/10 to-accent/10 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary/5">
+            <div className="w-22 h-22 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
               <BiSolidImageAdd className="text-5xl text-primary/40" />
             </div>
-            <h3 className="text-xl font-semibold text-text-primary mb-2">Belum Ada Postingan</h3>
+            <h3 className="text-xl font-semibold text-text-primary mb-2">Belum ada postingan</h3>
             <p className="text-text-muted text-sm mb-6 max-w-xs mx-auto leading-relaxed">
               Bagikan momen pertamamu dan mulailah terhubung dengan teman-teman.
             </p>
             <span
               onClick={openPopup}
-              className="inline-block text-primary font-semibold text-base hover:text-primary-hover transition cursor-pointer"
+              className="inline-block text-primary font-semibold text-sm hover:text-primary-hover transition cursor-pointer"
             >
               Bagikan foto pertama &rarr;
             </span>
@@ -323,7 +323,7 @@ const ProfilePage = () => {
             <div className="w-22 h-22 bg-bg-tertiary rounded-full flex items-center justify-center mx-auto mb-6">
               <IoSearchSharp className="text-5xl text-text-muted/40" />
             </div>
-            <h3 className="text-xl font-semibold text-text-primary mb-2">Belum Ada Postingan</h3>
+            <h3 className="text-lg font-semibold text-text-primary mb-2">Belum ada postingan</h3>
             <p className="text-text-muted text-sm max-w-xs mx-auto leading-relaxed">
               Pengguna ini belum membagikan postingan apapun.
             </p>
@@ -333,11 +333,11 @@ const ProfilePage = () => {
 
       {/* Post Detail Popup */}
       {detailOpen && selectedPost && (
-        <div className="fixed inset-0 z-100 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={closeDetail} />
 
           <div
-            className="relative w-full max-w-xl bg-bg-secondary rounded-3xl shadow-2xl shadow-black/50 overflow-hidden animate-[scaleIn_0.2s_ease-out]"
+            className="relative w-full max-w-xl bg-bg-secondary rounded-3xl overflow-hidden animate-scaleIn"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -348,7 +348,6 @@ const ProfilePage = () => {
             </button>
 
             <div className="flex flex-col md:flex-row max-h-[80vh]">
-              {/* Image */}
               <div className="md:w-3/5 bg-black select-none relative">
                 {selectedPost.attachments?.length > 0 ? (
                   <>
@@ -374,7 +373,7 @@ const ProfilePage = () => {
 
                     {selectedPost.attachments.length > 1 && (
                       <>
-                        <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full font-medium">
+                        <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg font-medium">
                           {currentIndex + 1} / {selectedPost.attachments.length}
                         </div>
 
@@ -384,7 +383,7 @@ const ProfilePage = () => {
                               key={i}
                               className={`rounded-full transition-all duration-300 ${
                                 i === currentIndex
-                                  ? "w-2.5 h-2.5 bg-white shadow-sm"
+                                  ? "w-2.5 h-2.5 bg-white"
                                   : "w-2 h-2 bg-white/40"
                               }`}
                             />
@@ -400,10 +399,9 @@ const ProfilePage = () => {
                 )}
               </div>
 
-              {/* Info */}
-              <div className="md:w-2/5 flex flex-col border-t md:border-t-0 md:border-l border-slate-500/10">
-                <div className="flex items-center gap-3 px-5 py-4 border-b border-slate-500/10">
-                  <div className="w-9 h-9 bg-linear-to-br from-primary to-accent rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0">
+              <div className="md:w-2/5 flex flex-col border-t md:border-t-0 md:border-l border-border-subtle">
+                <div className="flex items-center gap-3 px-5 py-4 border-b border-border-subtle">
+                  <div className="w-9 h-9 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-sm shrink-0">
                     {selectedPost.user?.username?.charAt(0).toUpperCase()}
                   </div>
                   <p className="font-semibold text-text-primary text-sm truncate">
@@ -413,7 +411,7 @@ const ProfilePage = () => {
 
                 <div className="flex-1 overflow-y-auto px-5 py-4 min-h-0">
                   {selectedPost.caption ? (
-                    <p className="text-text-primary text-[15px] leading-relaxed whitespace-pre-wrap">
+                    <p className="text-text-primary text-sm leading-relaxed whitespace-pre-wrap">
                       <span className="font-semibold mr-2">{selectedPost.user?.username}</span>
                       {selectedPost.caption}
                     </p>
@@ -423,10 +421,10 @@ const ProfilePage = () => {
                 </div>
 
                 {isOwnProfile && (
-                  <div className="px-5 py-4 border-t border-slate-500/10">
+                  <div className="px-5 py-4 border-t border-border-subtle">
                     <button
                       onClick={() => handleDeletePost(selectedPost.id)}
-                      className="w-full flex items-center justify-center gap-2 py-2.5 rounded-2xl bg-danger/10 text-danger hover:bg-danger/20 font-medium text-sm transition cursor-pointer"
+                      className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-danger/10 text-danger hover:bg-danger/20 font-medium text-sm transition cursor-pointer active:scale-[0.98]"
                     >
                       <IoTrashOutline className="text-base" />
                       Hapus Postingan
@@ -436,13 +434,6 @@ const ProfilePage = () => {
               </div>
             </div>
           </div>
-
-          <style>{`
-            @keyframes scaleIn {
-              from { opacity: 0; transform: scale(0.92) translateY(8px); }
-              to   { opacity: 1; transform: scale(1) translateY(0); }
-            }
-          `}</style>
         </div>
       )}
     </div>

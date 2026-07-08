@@ -111,12 +111,12 @@ const FollowersPage = () => {
                 {Array.from({ length: 8 }).map((_, i) => (
                     <phantom-ui animated="breathe" key={i} class="block">
                         <div className="flex items-center gap-3 py-3.5 px-1">
-                            <div className="w-11 h-11 bg-bg-tertiary rounded-full shrink-0"></div>
+                            <div className="w-11 h-11 bg-bg-tertiary rounded-xl shrink-0"></div>
                             <div className="flex-1 space-y-2">
                                 <div className="h-4 w-32 bg-bg-tertiary rounded"></div>
                                 <div className="h-3 w-20 bg-bg-tertiary rounded"></div>
                             </div>
-                            <div className="w-20 h-8 bg-bg-tertiary rounded-2xl shrink-0"></div>
+                            <div className="w-20 h-8 bg-bg-tertiary rounded-xl shrink-0"></div>
                         </div>
                     </phantom-ui>
                 ))}
@@ -128,11 +128,11 @@ const FollowersPage = () => {
     if (followers.length === 0) {
         return (
             <div className="text-center py-16">
-                <div className="w-18 h-18 bg-bg-tertiary rounded-full flex items-center justify-center mx-auto mb-5">
+                <div className="w-18 h-18 bg-bg-tertiary rounded-xl flex items-center justify-center mx-auto mb-5">
                     <IoPeopleOutline className="text-3xl text-text-muted/40" />
                 </div>
                 <h3 className="text-base font-semibold text-text-primary mb-1.5">
-                    Belum Ada Pengikut
+                    Belum ada pengikut
                 </h3>
                 <p className="text-text-muted text-sm max-w-xs mx-auto leading-relaxed">
                     {isOwnProfile
@@ -145,7 +145,7 @@ const FollowersPage = () => {
 
     return (
         <div>
-            <div className="divide-y divide-slate-500/10 -mt-2">
+            <div className="divide-y divide-border-subtle -mt-2">
                 {followers.map((user) => (
                     <FollowCard
                         key={user.id}

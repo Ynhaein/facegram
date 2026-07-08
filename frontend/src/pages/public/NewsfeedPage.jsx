@@ -182,7 +182,7 @@ const NewsfeedPage = () => {
               onChange={(e) => setSearch(e.target.value)}
               onFocus={() => setShowResults(true)}
               placeholder="Cari pengguna..."
-              className="w-full bg-bg-tertiary text-text-primary placeholder:text-text-muted pl-14 pr-14 py-4 rounded-2xl border border-slate-500/10 focus:border-primary/40 focus:outline-none focus:bg-bg-tertiary/80 text-[15px] transition-all duration-300"
+              className="w-full bg-bg-tertiary text-text-primary placeholder:text-text-muted pl-11 pr-11 py-3.5 rounded-2xl border border-border-default focus:border-primary/40 focus:outline-none focus:bg-bg-tertiary text-sm transition-all duration-200"
             />
 
             {search && (
@@ -203,7 +203,7 @@ const NewsfeedPage = () => {
                 onClick={() => setShowResults(false)}
               />
 
-              <div className="absolute mt-3 w-full bg-bg-secondary border border-slate-500/10 rounded-2xl shadow-2xl shadow-black/40 overflow-hidden z-50">
+              <div className="absolute mt-3 w-full bg-bg-secondary border border-border-default rounded-2xl overflow-hidden z-50">
                 {loadingSearch ? (
                   <div className="flex items-center justify-center gap-3 py-12 text-text-muted">
                     <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
@@ -221,12 +221,12 @@ const NewsfeedPage = () => {
                         }}
                         className="flex items-center gap-4 px-5 py-3.5 hover:bg-bg-tertiary/50 transition-colors duration-200"
                       >
-                        <div className="w-11 h-11 bg-linear-to-br from-primary to-accent rounded-full flex items-center justify-center text-white font-semibold text-base shrink-0 shadow-lg shadow-primary/20">
+                        <div className="w-11 h-11 bg-primary rounded-xl flex items-center justify-center text-white font-semibold text-base shrink-0">
                           {user.username?.charAt(0).toUpperCase()}
                         </div>
 
                         <div className="flex-1 min-w-0">
-                          <p className="font-medium text-text-primary truncate">
+                          <p className="font-medium text-text-primary truncate text-sm">
                             {user.username}
                           </p>
                           <p className="text-sm text-text-muted truncate">
@@ -235,7 +235,7 @@ const NewsfeedPage = () => {
                         </div>
 
                         {user.is_following && (
-                          <span className="text-xs bg-primary/10 text-primary px-3 py-1.5 rounded-full font-medium">
+                          <span className="text-xs bg-primary/10 text-primary px-3 py-1.5 rounded-lg font-medium">
                             Teman
                           </span>
                         )}
@@ -276,7 +276,7 @@ const NewsfeedPage = () => {
             </div>
           ) : profile.following_count === 0 ? (
             <div className="text-center py-16 md:py-24">
-              <div className="w-20 h-20 bg-linear-to-br from-primary/15 to-accent/15 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary/5">
+              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                 <IoSearchSharp className="text-4xl text-primary/50" />
               </div>
               <h2 className="text-xl font-semibold text-text-primary mb-2">
@@ -289,12 +289,11 @@ const NewsfeedPage = () => {
           ) : (
             loadingPosts ? (
               Array.from({length : 5}).map((_, index) => (
-                <phantom-ui animated="breathe" key={index} class="block">
-                  <div className="bg-bg-secondary border border-border rounded-3xl overflow-hidden mb-8 animate-pulse">
-                    {/* Header Skeleton */}
+                    <phantom-ui animated="breathe" key={index} class="block">
+                  <div className="bg-bg-secondary rounded-3xl overflow-hidden mb-6">
                     <div className="flex items-center justify-between px-5 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-bg-tertiary rounded-full"></div>
+                        <div className="w-10 h-10 bg-bg-tertiary rounded-xl"></div>
                         <div className="space-y-2">
                           <div className="h-4 w-32 bg-bg-tertiary rounded"></div>
                           <div className="h-3 w-20 bg-bg-tertiary rounded"></div>
@@ -303,16 +302,13 @@ const NewsfeedPage = () => {
                       <div className="w-6 h-6 bg-bg-tertiary rounded"></div>
                     </div>
 
-                    {/* Image Skeleton */}
                     <div className="bg-bg-tertiary aspect-square w-full"></div>
 
-                    {/* Actions Skeleton */}
                     <div className="px-5 py-4 flex gap-6">
-                      <div className="w-8 h-8 bg-bg-tertiary rounded-full"></div>
-                      <div className="w-8 h-8 bg-bg-tertiary rounded-full"></div>
+                      <div className="w-7 h-7 bg-bg-tertiary rounded-lg"></div>
+                      <div className="w-7 h-7 bg-bg-tertiary rounded-lg"></div>
                     </div>
 
-                    {/* Caption Skeleton */}
                     <div className="px-5 pb-6 space-y-2">
                       <div className="h-4 w-24 bg-bg-tertiary rounded"></div>
                       <div className="h-4 w-full bg-bg-tertiary rounded"></div>
@@ -361,7 +357,7 @@ const NewsfeedPage = () => {
             {/* Profile Card */}
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <div className="w-11 h-11 bg-linear-to-br from-primary to-accent rounded-full flex items-center justify-center text-white font-semibold text-base shrink-0">
+                <div className="w-11 h-11 bg-primary rounded-xl flex items-center justify-center text-white font-semibold text-base shrink-0">
                   {profile.user?.username?.charAt(0).toUpperCase()}
                 </div>
                 <div>
@@ -369,22 +365,20 @@ const NewsfeedPage = () => {
                   <p className="text-xs text-text-muted">Facegram</p>
                 </div>
               </div>
-              <Link to={`/profile`} className="text-xs text-primary font-medium shrink-0">
+              <Link to={`/profile`} className="text-xs text-primary font-medium shrink-0 hover:underline">
                 Lihat Profil
               </Link>
             </div>
 
-            {/* Suggested Header */}
             <div className="flex items-center justify-between mb-4">
               <p className="text-sm font-semibold text-text-muted">Suggested untuk kamu</p>
             </div>
 
-            {/* Suggested Users List */}
             <div className="space-y-4">
               {suggestedUsers.map(user => (
                 <div key={user.id} className="flex items-center justify-between">
                   <Link to={`/profile/${user.username}`} className="flex items-center gap-3 flex-1 min-w-0">
-                    <div className="w-9 h-9 bg-linear-to-br from-primary to-accent rounded-full flex items-center justify-center text-white font-semibold text-xs shrink-0">
+                    <div className="w-9 h-9 bg-primary rounded-xl flex items-center justify-center text-white font-semibold text-xs shrink-0">
                       {user.username?.charAt(0).toUpperCase()}
                     </div>
                     <div className="min-w-0">
@@ -415,8 +409,8 @@ const NewsfeedPage = () => {
           </>
           )
         ): (
-          <div className="border border-dashed border-slate-500/20 rounded-2xl p-6 text-center">
-            <div className="w-12 h-12 bg-linear-to-br from-primary/10 to-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-sm shadow-primary/5">
+          <div className="border border-dashed border-border-default rounded-2xl p-6 text-center">
+            <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
               <svg className="w-5 h-5 text-primary/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
               </svg>
@@ -424,7 +418,7 @@ const NewsfeedPage = () => {
             <h3 className="text-sm font-semibold text-text-primary mb-1">
               Rekomendasi Pengguna
             </h3>
-            <p className="text-xs text-text-muted leading-relaxed mb-4">
+            <p className="text-xs text-text-muted leading-relaxed">
               <Link to="/login" className="text-primary hover:underline font-medium">Login</Link> atau{" "}
               <Link to="/register" className="text-primary hover:underline font-medium">Daftar</Link> untuk melihat rekomendasi.
             </p>

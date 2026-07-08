@@ -74,22 +74,22 @@ const RegisterPage = () => {
   return (
     <div className="w-full">
       <header className="mb-8">
-        <h2 className="text-text-primary text-2xl font-bold">Buat Akun Baru</h2>
-        <p className="text-text-secondary mt-1.5 text-sm">
+        <h2 className="text-text-primary text-2xl font-bold -tracking-0.5">Buat akun baru</h2>
+        <p className="text-text-secondary mt-2 text-sm">
           Daftar dan mulai bagikan momenmu
         </p>
       </header>
 
-      <form onSubmit={handleRegister} className="space-y-4.5">
-        
+      <form onSubmit={handleRegister} className="space-y-5">
+
         {/* Username */}
         <div className="relative group">
           <span className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-text-muted group-focus-within:text-primary transition-colors duration-200">
             <FaUser className="text-sm" />
           </span>
           <input
-            className="w-full bg-bg-tertiary text-text-primary placeholder:text-text-muted/60 pl-11 pr-4 py-3 rounded-xl border border-transparent focus:border-primary/50 focus:outline-none transition-all duration-200 text-sm"
-            type="text"  
+            className="w-full bg-bg-tertiary text-text-primary placeholder:text-text-muted/60 pl-11 pr-4 py-3 rounded-xl border border-border-default focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/20 transition-all duration-200 text-sm"
+            type="text"
             name="username"
             onChange={handleChange}
             value={form.username}
@@ -106,7 +106,7 @@ const RegisterPage = () => {
             <FaEnvelope className="text-sm" />
           </span>
           <input
-            className="w-full bg-bg-tertiary text-text-primary placeholder:text-text-muted/60 pl-11 pr-4 py-3 rounded-xl border border-transparent focus:border-primary/50 focus:outline-none transition-all duration-200 text-sm"
+            className="w-full bg-bg-tertiary text-text-primary placeholder:text-text-muted/60 pl-11 pr-4 py-3 rounded-xl border border-border-default focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/20 transition-all duration-200 text-sm"
             type="email"
             name="email"
             onChange={handleChange}
@@ -124,7 +124,7 @@ const RegisterPage = () => {
             <FaLock className="text-sm" />
           </span>
           <input
-            className="w-full bg-bg-tertiary text-text-primary placeholder:text-text-muted/60 pl-11 pr-4 py-3 rounded-xl border border-transparent focus:border-primary/50 focus:outline-none transition-all duration-200 text-sm"
+            className="w-full bg-bg-tertiary text-text-primary placeholder:text-text-muted/60 pl-11 pr-4 py-3 rounded-xl border border-border-default focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/20 transition-all duration-200 text-sm"
             type="password"
             name="password"
             onChange={handleChange}
@@ -139,7 +139,7 @@ const RegisterPage = () => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 rounded-xl bg-primary hover:bg-primary-hover active:bg-primary-active text-white font-semibold text-sm tracking-wide transition-all duration-200 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
+          className="w-full py-3 rounded-xl bg-primary hover:bg-primary-hover active:bg-primary-active text-white font-semibold text-sm tracking-wide transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]"
         >
           {loading ? "Mendaftar..." : "Daftar"}
         </button>
